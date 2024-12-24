@@ -361,6 +361,72 @@ ALTER TABLE ONLY public.planet
 ALTER TABLE ONLY public.star
     ADD CONSTRAINT star_galaxy_id_fkey FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
 
+-- Insert data into galaxy table
+INSERT INTO galaxy (name, type, distance_from_earth, age, number_of_stars)  
+VALUES  
+('Milky Way', 'Spiral', 0, 13.51, 1000000000),  
+('Andromeda', 'Spiral', 2530000, 10, 1000000000),  
+('Whirlpool', 'Spiral', 23000000, 9.1, 1000000000),  
+('Sombrero', 'Spiral', 28000000, 13, 1000000000),  
+('Triangulum', 'Spiral', 3000000, 13.1, 1000000000),  
+('Messier 87', 'Elliptical', 53000000, 13.7, 1000000000);
+
+-- Insert data into nebula table
+INSERT INTO nebula (name, type, distance_from_earth, galaxy_id)  
+VALUES  
+('Eagle Nebula', 'Emission', 7000, 1), 
+('Crab Nebula', 'Supernova Remnant', 6500, 2), 
+('Ring Nebula', 'Planetary', 2300, 3);
+
+-- Insert data into star table
+INSERT INTO star (name, type, distance_from_earth, temperature, galaxy_id)  
+VALUES  
+('Sun', 'Main Sequence', 0, 5778.00, 1),  
+('Sirius', 'Binary', 8.6, 9940.00, 1),  
+('Alpha Centauri', 'Binary', 4.37, 5790.00, 2),  
+('Betelgeuse', 'Supergiant', 642.5, 3500.00, 3),  
+('Polaris', 'Supergiant', 433, 6000.00, 4),  
+('Rigel', 'Supergiant', 860, 12000.00, 5);
+
+-- Insert data into planet table
+INSERT INTO planet (name, type, distance_from_star, has_rings, star_id)
+VALUES
+('Earth', 'Rocky', 0, FALSE, 1),
+('Mars', 'Rocky', 0.52, FALSE, 1),
+('Venus', 'Rocky', 0.28, FALSE, 1),
+('Jupiter', 'Gas Giant', 5.2, TRUE, 1),
+('Saturn', 'Gas Giant', 9.58, TRUE, 2),
+('Uranus', 'Ice Giant', 19.2, TRUE, 2),
+('Neptune', 'Ice Giant', 30.07, TRUE, 3),
+('Mercury', 'Rocky', 0.39, FALSE, 1),
+('Titan', 'Moon', 1.2, TRUE, 4),
+('Io', 'Moon', 1.8, FALSE, 3),
+('Europa', 'Moon', 1.9, TRUE, 2),
+('Ganymede', 'Moon', 2.1, TRUE, 1);
+
+-- Insert data into moon table
+INSERT INTO moon (name, diameter, orbital_period, planet_id)
+VALUES
+('Moon', 3474, 27.3, 1),
+('Phobos', 22.4, 0.3, 2),
+('Deimos', 12.4, 1.3, 2),
+('Io', 3643.2, 1.8, 3),
+('Europa', 3121.6, 3.5, 3),
+('Ganymede', 5268.0, 7.2, 3),
+('Titan', 5150.0, 15.9, 4),
+('Rhea', 1528.0, 4.5, 4),
+('Mimas', 396.0, 0.9, 4),
+('Enceladus', 504.0, 1.4, 4),
+('Tethys', 1066.0, 1.9, 4),
+('Iapetus', 1469.0, 79.3, 4),
+('Miranda', 471.0, 1.4, 5),
+('Ariel', 1158.0, 2.6, 5),
+('Umbriel', 1171.0, 4.1, 5),
+('Titania', 1578.0, 8.7, 5),
+('Oberon', 1522.0, 13.5, 5),
+('Charon', 1212.0, 6.4, 6),
+('Callisto', 4821.6, 16.7, 1),
+('Nix', 40.0, 0.3, 6);
 
 --
 -- PostgreSQL database dump complete
